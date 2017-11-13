@@ -22,7 +22,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+
+  // MARK: - IBOutlets
+  @IBOutlet var tableView: UITableView!
 
   // MARK: - Properties
   lazy var dateFormatter: DateFormatter = {
@@ -31,26 +34,20 @@ class ViewController: UIViewController {
     formatter.timeStyle = .medium
     return formatter
   }()
-  var walks: [NSDate] = []
+  fileprivate var walks: [NSDate] = []
 
-  // MARK: - IBOutlets
-  @IBOutlet var tableView: UITableView!
-
-  // MARK: - View Life Cycle
+  // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
   }
-}
 
-// MARK: - IBActions
-extension ViewController {
-
+  // MARK: - IBActions
   @IBAction func add(_ sender: UIBarButtonItem) {
     walks.append(NSDate())
     tableView.reloadData()
   }
+
 }
 
 // MARK: UITableViewDataSource
