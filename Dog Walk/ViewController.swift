@@ -21,6 +21,7 @@
  */
 
 import UIKit
+import CoreData
 
 final class ViewController: UIViewController {
 
@@ -35,6 +36,7 @@ final class ViewController: UIViewController {
     return formatter
   }()
   fileprivate var walks: [NSDate] = []
+  var managedContext: NSManagedObjectContext!
 
   // MARK: - Life Cycle
   override func viewDidLoad() {
